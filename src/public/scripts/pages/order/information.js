@@ -187,7 +187,7 @@ if (cartDataString.length) {
                 elementHidden.classList.add('product', 'mobile-hidden')
                 elementHidden.innerHTML = `
                     <div class="product__view order-product__col-big">
-                        <img src="/imgs/product_image/P${productId}/${productAvtImg}" alt="${productName}">
+                        <img src="/imgs/product_image/XGear/${productAvtImg}" alt="${productName}">
                         <p>${productName}</p>
                     </div>
 
