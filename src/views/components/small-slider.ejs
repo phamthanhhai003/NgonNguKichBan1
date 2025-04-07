@@ -3,7 +3,7 @@
 		<% if (productImgs) { %>
 		<div class="slides">
 			<% productImgs.forEach(product => { %>
-			<img src="/imgs/product_image/P<%= product.product_id %>/<%= product.image_name %>" alt="<%= product.image_name %>">
+			<img src="/imgs/product_image/XGear/<%= product.image_name %>" alt="<%= product.image_name %>">
 			<% }) %>
 		</div>
 		<% } %>
@@ -19,7 +19,7 @@
 		<% if (productImgs) { %>
 		<div class="thumbnails">
 			<% productImgs.forEach((product, index) => { %>
-			<img src="/imgs/product_image/P<%= product.product_id %>/<%= product.image_name %>" alt="<%= product.image_name %>" onclick="currentSlide('<%= index + 1 %>')">
+			<img src="/imgs/product_image/XGear/<%= product.image_name %>" alt="<%= product.image_name %>" onclick="currentSlide('<%= index + 1 %>')">
 			<% }) %>
 		</div>
 		<% } %>
