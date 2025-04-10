@@ -1,0 +1,13 @@
+<div class="success-modal" style="display: none;">Thanh toán thành công!</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const successModal = document.querySelector('.success-modal');
+    successModal.style.display = 'flex';
+
+    setTimeout(() => {
+      successModal.style.display = 'none';
+      window.location.href = '/account/purchase?order_status=Đang%20giao%20hàng';
+    }, 1000);
+  });
+</script>

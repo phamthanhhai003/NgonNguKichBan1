@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // Open success modal
-setTimeout(() => {
-	const successModal = document.querySelector('.success-modal')
-	successModal.style.display = 'flex'
-	setTimeout(() => {
-		successModal.style.display = 'none'
-		window.location.href = '/account/purchase?order_status=Đang%20giao%20hàng'
-	}, 1000)
-}, 5000)
+// setTimeout(() => {
+// 	const successModal = document.querySelector('.success-modal')
+// 	successModal.style.display = 'flex'
+// 	setTimeout(() => {
+// 		successModal.style.display = 'none'
+// 		window.location.href = '/account/purchase?order_status=Đang%20giao%20hàng'
+// 	}, 1000)
+// }, 5000)

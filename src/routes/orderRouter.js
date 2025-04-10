@@ -3,7 +3,8 @@ const router = express.Router();
 
 // import controller
 const orderController = require('../controllers/customer/orderController.js')
-const authMiddleware = require('../middleware/authMiddleware.js')
+const authMiddleware = require('../middleware/authMiddleware.js');
+const vnpayController = require('../controllers/customer/vnpayController.js')
 
 router.get('/cart', authMiddleware.isLoggedIn, orderController.cart)
 router.post('/cart/delete', authMiddleware.isLoggedIn, orderController.deleteCart)
@@ -15,5 +16,9 @@ router.post('/information', authMiddleware.isLoggedIn, orderController.informati
 
 router.get('/payment', authMiddleware.isLoggedIn, orderController.payment)
 router.post('/cancel_order', authMiddleware.isLoggedIn, orderController.cancelOrder)
+
+router.post('/create_payment_url', vnpayController.createPayment);
+router.get('/vnpay_return', vnpayController.vnpayReturn);
+
 
 module.exports = router;
