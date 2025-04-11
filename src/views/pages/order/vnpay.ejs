@@ -29,37 +29,48 @@
 					</div>
 					<div class="inner-box">
 						<div class="info-order">
-							<div class="info-order__header">
-								<div class="info-order__header--left">
-									<p><strong>ĐƠN HÀNG:</strong></p>
-									<p id="trans__id">#DH00<%=purchase.order_id%></p>
-								</div>
+						  <div class="info-order__header">
+							<div class="info-order__header--left">
+							  <p><strong>ĐƠN HÀNG:</strong></p>
+							  <p id="trans__id">#DH00<%= purchase.order_id %></p>
 							</div>
-							<div class="info-order__bill">
-								<span>- <strong>Người đặt hàng: </strong><span id="purchase-info"><%=purchase.order_name%></span></span>
-								<span>- <strong>Tổng tiền: 
-									<a class = "order-pay__total"></a>
-								</strong><span id="purchase-amount">
-										<% if (purchase.order_details.length > 0) { %>
-										<% let totalAmount = 0; %>
-										<% purchase.order_details.forEach(detail => { %>
-										<% totalAmount += (detail.order_detail_price_after * detail.order_detail_quantity) ; %>
-										<% }); %>
-										<%= formatFunction.toCurrency(totalAmount) %>
-										<% } %>
-									</span></span>
-									
-							</div>
+						  </div>
+					  
+						  <div class="info-order__bill">
+							<span>- <strong>Người đặt hàng: </strong>
+							  <span id="purchase-info"><%= purchase.order_name %></span>
+							</span>
+					  
+							<% let totalAmount = 0; %>
+							<% if (purchase.order_details.length > 0) { %>
+							  <% purchase.order_details.forEach(detail => { %>
+								<% totalAmount += (detail.order_detail_price_after * detail.order_detail_quantity); %>
+							  <% }); %>
+							<% } %>
+					  
+							<span>
+							  - <strong>Tổng tiền: </strong>
+							  <span id="purchase-amount"><%= formatFunction.toCurrency(totalAmount) %></span>
+							</span>
+						  </div>
 						</div>
-
+					  
 						<div class="purchase-status">Đơn hàng chưa được thanh toán</div>
-					</div>
+					  
+						<!-- Form thanh toán VNPAY -->
+						<form id="vnpayForm" action="/order/create_payment_url" method="POST">
+						  <input type="hidden" name="amount" value="<%= totalAmount %>">
+						  <!-- Nếu muốn cho người dùng chọn bankCode thì thêm input/select -->
+						  <!-- <input type="hidden" name="bankCode" value="VNPAYQR"> -->
+						  <button type="submit" class="btn btn-success mt-2">Thanh toán VNPAY</button>
+						</form>
+					  </div>
 				</div>
 			</div>
 			<div class="vnpay_left-cancel">Hủy bỏ</div>
 		</div>
 
-		<div class="vnpay-qr">
+		<!-- <div class="vnpay-qr">
 			<h4>Quét mã QR để thanh toán</h4>
 			<div class="scanning-box">
 				<img src="/imgs/transaction/vnpay-qr.png" alt="vnpay_qr">
@@ -79,7 +90,7 @@
 				</div>
 			</div>
 			<div class="vnpay_left-cancel_ip">Hủy bỏ</div>
-		</div>
+		</div> -->
 	</main>
 
 	<%- include('../../components/success-modal', {action: 'Thanh toán'}) %>
